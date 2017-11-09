@@ -113,8 +113,6 @@ app.post('/payment',
                 res.status(200).send("Pagamento registrado com sucesso")
               })
 
-
-
             }
 )
 app.listen(port);
