@@ -1,12 +1,16 @@
 const { body, validationResult } = require('express-validator/check');
-var body_parser = require('body-parser');
 var express = require('express'),
   app = express(),
   port = 8080;
 
+var body_parser = require('body-parser');
 
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({ extended: true }));
+
+Payment = require('./db.js')
+
+
 
 app.get('/plans', function(req, res)
   {
@@ -65,7 +69,7 @@ app.post('/payment',
 
 
               if (discount > 50.00)
-                return res.status(406).send("ERRO: O desconto oferecido não pode ser superior a 50%")
+                return res.status(406).send("ERRO: O desconto oferecido não pode ser superior a 50%");
 
               switch(product)
               {
@@ -88,11 +92,29 @@ app.post('/payment',
                 default:
                   return res.status(406).send("ERRO: O produto deve exisir. Deve ser um dos seguintes:\ngold_plan\nplatinum_plan\nsuper_premium_plan")
               }
-              var payment = parseFloat(product_price) - ( (parseFloat(discount)/100)*parseFloat(product_price) )
-              if (payment != price)
-                return res.status(406).send("ERRO: Valor a ser pago pelo cliente inserido incorretamente. 'price' deve valer: " + payment.toString() )
 
-              res.status(200).send()
+              var payment_price = parseFloat(product_price) - ( (parseFloat(discount)/100)*parseFloat(product_price) );
+              if (payment_price != price)
+                return res.status(406).send("ERRO: Valor a ser pago pelo cliente inserido incorretamente. 'price' deve valer: " + payment.toString() );
+
+              var payment = Payment({
+                db_payment_date   : payment_date,
+                db_payment_type   : payment_type,
+                db_product        : product,
+                db_product_price  : product_price,
+                db_discount       : discount,
+                db_price          : price,
+                db_transaction_id : transaction_id
+              })
+
+              payment.save(function(err){
+                if(err) return res.status(500).send("ERRO: Erro ao inserir dados no banco de dados");
+
+                res.status(200).send("Pagamento registrado com sucesso")
+              })
+
+
+
             }
 )
 app.listen(port);
