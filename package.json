@@ -1,0 +1,17 @@
+{
+  "name": "primeira_etapa_estagio",
+  "version": "1.0.0",
+  "description": "Code feito para a primeira etapa de um processo seletivo para estagio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-validator": "^4.3.0"
+  }
+}
