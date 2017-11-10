@@ -1,7 +1,7 @@
 const { body, validationResult } = require('express-validator/check');
 var express = require('express'),
-  app = express(),
-  port = 8080;
+     app = express(),
+     port = 8080;
 
 var body_parser = require('body-parser');
 
@@ -13,7 +13,7 @@ Payment = require('./db.js')
 
 
 app.get('/plans', function(req, res)
-  {
+ {
     res.contentType('application/json');
     var answer = [ {
       'Plano Gold' :
@@ -41,7 +41,6 @@ app.post('/payment',
             body('product').exists(),
             body('product_price').exists(),
             body('discount').exists(),
-            body('price').exists(),
             body('transaction_id').exists()
           ],
           function(req, res)
@@ -53,14 +52,13 @@ app.post('/payment',
                */
               var realNumber = new RegExp('(\\d*[.])?\\d+');
 
-              /* Nas próximas três variáveis eu transformei as ',' em '.' para
+              /* Nas próximas duas variáveis eu transformei as ',' em '.' para
                * poder usar parseFloat corretamente e usei o RegExp para
                * conseguir pegar o número, independente de como foi feita a
                * input.
                */
               var product_price = req.body.product_price.replace(',','.').match(realNumber)[0];
               var discount = req.body.discount.replace(',','.').match(realNumber)[0];
-              var price = req.body.price.replace(',','.').match(realNumber)[0];
               var payment_date = req.body.payment_date
               var payment_type = req.body.payment_type;
               var product = req.body.product;
@@ -93,9 +91,8 @@ app.post('/payment',
                   return res.status(406).send("ERRO: O produto deve exisir. Deve ser um dos seguintes:\ngold_plan\nplatinum_plan\nsuper_premium_plan")
               }
 
-              var payment_price = parseFloat(product_price) - ( (parseFloat(discount)/100)*parseFloat(product_price) );
-              if (payment_price != price)
-                return res.status(406).send("ERRO: Valor a ser pago pelo cliente inserido incorretamente. 'price' deve valer: " + payment.toString() );
+              var price = parseFloat(product_price) - ( (parseFloat(discount)/100)*parseFloat(product_price) );
+              
 
               var payment = Payment({
                 db_payment_date   : payment_date,
@@ -103,16 +100,15 @@ app.post('/payment',
                 db_product        : product,
                 db_product_price  : product_price,
                 db_discount       : discount,
-                db_price          : price,
                 db_transaction_id : transaction_id
               })
 
+              
               payment.save(function(err){
                 if(err) return res.status(500).send("ERRO: Erro ao inserir dados no banco de dados");
-
-                res.status(200).send("Pagamento registrado com sucesso")
               })
-
+              res.status(200).send("Pagamento registrado com sucesso")
             }
 )
+
 app.listen(port);
