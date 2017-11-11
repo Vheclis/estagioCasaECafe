@@ -1,5 +1,7 @@
-var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/server_mongo:27017')
+const mongoose = require('mongoose')
+const url = process.env.MONGODB_HOST || 'localhost'
+
+mongoose.connect('mongodb://' + url + ':27017')
 var Schema = mongoose.Schema;
 
 var payment_schema = new Schema

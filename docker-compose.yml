@@ -8,10 +8,12 @@ services:
         - 27017:27017
 
     server:
-      image: heclis/estagiop1:latest
+      image: vheclis/casaecafep1:latest
       ports:
         - 8080:8080
       links:
         - server_mongo
       depends_on:
         - server_mongo
+      environment:
+        MONGODB_HOST: 'server_mongo'
