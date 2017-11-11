@@ -1,0 +1,17 @@
+version: '3' 
+services:
+    server_mongo:
+      image: mongo:latest
+      volumes:
+        - ./database:/data/db
+      ports:
+        - 27017:27017
+
+    server:
+      image: heclis/estagiop1:latest
+      ports:
+        - 8080:8080
+      links:
+        - server_mongo
+      depends_on:
+        - server_mongo

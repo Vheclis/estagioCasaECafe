@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/db')
+mongoose.connect('mongodb://localhost/server_mongo:27017')
 var Schema = mongoose.Schema;
 
 var payment_schema = new Schema
