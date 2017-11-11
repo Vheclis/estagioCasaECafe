@@ -76,34 +76,33 @@ app.post('/payment',
                 return res.status(400).send("ERRO: O desconto oferecido não pode ser superior a " + max_discount + "%");
 
 
-              for(let i in plan_names)
+              let right_plan = plan_names.find((element) => {return element == product})
+
+              if(right_plan)
               {
-                if(product == plan_names[i])
-                {
-                  let right_price = Config.plans[plan_names[i]]['price']
-                  if(product_price != right_price)
-                    return res.status(400).send("ERRO: O preço do produto não é compativel com o produto, deveria ser R$ " + right_price);
-                  let product_price_f = parseFloat(product_price);
-                  let discount_f = parseFloat(discount);
-                  let price = product_price_f - ( (discount_f/100)*product_price_f );
-              
-                  let payment = Payment({
-                    db_payment_date   : payment_date,
-                    db_payment_type   : payment_type,
-                    db_product        : product,
-                    db_product_price  : product_price,
-                    db_discount       : discount,
-                    db_transaction_id : transaction_id
-                  })
+                let right_price = Config.plans[right_plan]['price']
+                let product_price_f = parseFloat(product_price);
+                if(product_price_f != right_price)
+                  return res.status(400).send("ERRO: O preço do produto não é compativel com o produto, deveria ser R$ " + right_price);
+                let discount_f = parseFloat(discount);
+                let price = right_price - ( (discount_f/100)*right_price );
+                let payment = Payment({
+                  db_payment_date   : payment_date,
+                  db_payment_type   : payment_type,
+                  db_product        : product,
+                  db_product_price  : product_price,
+                  db_discount       : discount,
+                  db_transaction_id : transaction_id
+                })
 
-                  payment.save(function(err){
-                    if(err) return res.status(500).send("ERRO: Erro ao inserir dados no banco de dados");
+                payment.save(function(err){
+                  if(err) return res.status(500).send("ERRO: Erro ao inserir dados no banco de dados");
 
-                    res.status(200).send("Pagamento registrado com sucesso")
-                  })
-                  return ;
-                }
+                  res.status(200).send("Pagamento registrado com sucesso")
+                })
+                return ;
               }
+              
               let err_answear = "ERRO: O produto deve exisir. Deve ser um dos seguintes:\n";
               for (let i in plan_names)
                 err_answear += plan_names[i] + "\n"
