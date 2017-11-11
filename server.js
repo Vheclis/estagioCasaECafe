@@ -8,9 +8,8 @@ let body_parser = require('body-parser');
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({ extended: true }));
 
-Payment = require('./db.js')
-
-
+let Payment = require('./db.js')
+let Plans = require('./config.js');
 
 app.get('/plans', (req, res) => {
     res.contentType('application/json');
@@ -18,19 +17,19 @@ app.get('/plans', (req, res) => {
       //coloquei os products como chaves e o campo 'name' para que a chave não tivesse espaço
       'gold_plan' :
         {
-          name : 'Plano Gold', price : 'R$ 59,90', description : 'plano pago gold'
+          name : Plans.gold_plan['name'], price : Plans.gold_plan['price'] , description : Plans.gold_plan['description']
         },
       'platinum_plan' :
         {
-          name : 'Plano Platinum', price : 'R$ 79,90', description : 'premium platinum'
+          name : Plans.platinum_plan['name'], price : Plans.platinum_plan['price'] , description : Plans.platinum_plan['description']
         },
       'super_premium_plan' :
         {
-          name : 'Plano Super Premium', price : 'R$ 129,90', description : ' o melhor plano de todos'
+          name : Plans.super_premium_plan['name'] , price : Plans.super_premium_plan['price'] , description : Plans.super_premium_plan['description']
         }
     } ]
     res.status(200);
-    res.send(JSON.stringify(answer, null, '\t'));
+    res.json(answer);
   }
 )
 
@@ -64,26 +63,26 @@ app.post('/payment',
               let transaction_id = req.body.transaction_id;
 
 
-              let max_discount = 50.00
+              let max_discount = Plans.max_discount;
               if (discount > max_discount)
-                return res.status(400).send("ERRO: O desconto oferecido não pode ser superior a 50%");
+                return res.status(400).send("ERRO: O desconto oferecido não pode ser superior a " + max_discount + "%");
 
               switch(product)
               {
                 case 'gold_plan':
-                let price_gold = 59.90;
+                let price_gold = Plans.gold_plan['price'].replace(',','.').match(realNumber)[0];
                 if(product_price != price_gold)
                     return res.status(400).send("ERRO: O preço do produto não é compativel com o produto, deveria ser R$" + price_gold)
 
                 break;
                 case 'platinum_plan':
-                let platinum_price = 79.90;
+                let platinum_price = Plans.platinum_plan['price'].replace(',','.').match(realNumber)[0];
                 if(product_price != platinum_price)
                     return res.status(400).send("ERRO: O preço do produto não é compativel com o produto, deveria ser R$" + platinum_price)
 
                 break;
                 case 'super_premium_plan':
-                let super_premium_price = 129.90;
+                let super_premium_price = Plans.super_premium_plan['price'].replace(',','.').match(realNumber)[0];
                 if(product_price != super_premium_price)
                     return res.status(400).send("ERRO: O preço do produto não é compativel com o produto, deveria ser R$" + super_premium_price)
 
@@ -108,8 +107,10 @@ app.post('/payment',
               
               payment.save(function(err){
                 if(err) return res.status(500).send("ERRO: Erro ao inserir dados no banco de dados");
+
+                res.status(200).send("Pagamento registrado com sucesso")
               })
-              res.status(200).send("Pagamento registrado com sucesso")
+              
             }
 )
 
