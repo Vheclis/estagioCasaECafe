@@ -18,7 +18,7 @@ Há duas formas de montar o app atualmente.
 # docker-compose up -d
 ```
 #### **Não usando docker**
- - Deve se estar na pasta **root** do app;
+ - Deve-se estar na pasta **root** do app;
  - Deve-se inserir o seguinte comando no console:
 ```cmd
 # npm install
