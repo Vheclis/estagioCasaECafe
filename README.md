@@ -1,7 +1,7 @@
 # estagioCasaECafe - Processo seletivo
 Repositório dedicado aos códicos feitos para o processo seletivo da empresa [Casa e Café](https://www.casaecafe.com).
 ___
-## Primera Etapa 
+## Primera Etapa
 Para a primeira etapa tinhamos que fazer um aplicativo `RESTful`, com uma chamada `GET` para a rota com final `/plans` e uma chamada `POST` para uma rota com final `/payment`. **Fiz a escolha de o `price` ser calculado no backend, portanto não há campo `price` no body**.
 
 ### Pré-requisitos
@@ -18,21 +18,28 @@ Há duas formas de montar o app atualmente.
 ```cmd
 # docker-compose up -d
 ```
+
 #### **Não usando docker**
- - Deve se estar na pasta **root** do app;
+ - Deve-se estar na pasta **root** do app;
  - Mongo deve estar rodando na porta padrão;
  - Deve-se inserir o seguinte comando no console:
 ```cmd
 # npm install
 # npm run start
 ```
+
+### Exemplos de Input no [POSTMAN](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop)
+ - Exemplo de configuração para fazer um POST:
+  - ![POST_exemple](https://imgur.com/K5jNYqf)
+ - Exemplo de configuração para um GET:
+  - ![GET_exemple](https://imgur.com/BkXkLDw)
 ___
-## Segunda Etapa 
+## Segunda Etapa
 
 ___
-## Terceira Etapa 
+## Terceira Etapa
 
 ___
-## Quarta Etapa 
+## Quarta Etapa
 
 ___
