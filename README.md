@@ -2,7 +2,7 @@
 Repositório dedicado aos códicos feitos para o processo seletivo da empresa [Casa e Café](https://www.casaecafe.com).
 ___
 ## Primera Etapa 
-Para a primeira etapa tinhamos que fazer um aplicativo `RESTful`, com uma chamada `GET` para a rota com final `/plans` e uma chamada `POST` para uma rota com final `/payment`. **Fiz a escolha de o `price` ser calculado no backend, portanto não há campo `price` no body.
+Para a primeira etapa tinhamos que fazer um aplicativo `RESTful`, com uma chamada `GET` para a rota com final `/plans` e uma chamada `POST` para uma rota com final `/payment`. **Fiz a escolha de o `price` ser calculado no backend, portanto não há campo `price` no body**.
 
 ### Pré-requisitos
 Caso opte por _não usar_ o **Docker** é necessário que tanto o **_[MongoDB](https://www.mongodb.com/)_** quanto o **_[Node.js](https://nodejs.org/en/)_** estejam instalados na máquina.
