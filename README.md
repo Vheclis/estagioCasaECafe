@@ -19,6 +19,7 @@ Há duas formas de montar o app atualmente.
 ```
 #### **Não usando docker**
  - Deve se estar na pasta **root** do app;
+ - Mongo deve estar rodando na porta padrão;
  - Deve-se inserir o seguinte comando no console:
 ```cmd
 # npm install

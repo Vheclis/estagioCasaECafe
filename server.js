@@ -40,6 +40,7 @@ app.post('/payment',
             body('payment_type').exists(),
             body('product').exists(),
             body('product_price').exists(),
+            body('price').exists(),
             body('discount').exists(),
             body('transaction_id').exists()
           ],
@@ -64,6 +65,7 @@ app.post('/payment',
                * input.
                */
               let product_price = req.body.product_price.replace(',','.').match(realNumber)[0];
+              let price = req.body.price.replace(',','.').match(realNumber)[0];
               let discount = req.body.discount.replace(',','.').match(realNumber)[0];
               let payment_date = req.body.payment_date
               let payment_type = req.body.payment_type;
@@ -85,7 +87,7 @@ app.post('/payment',
                 if(product_price_f != right_price)
                   return res.status(400).send("ERRO: O preço do produto não é compativel com o produto, deveria ser R$ " + right_price);
                 let discount_f = parseFloat(discount);
-                let price = right_price - ( (discount_f/100)*right_price );
+                price = right_price - ( (discount_f/100)*right_price );
                 let payment = Payment({
                   db_payment_date   : payment_date,
                   db_payment_type   : payment_type,
