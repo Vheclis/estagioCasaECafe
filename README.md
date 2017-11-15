@@ -32,11 +32,11 @@ Há duas formas de montar o app atualmente.
 ### Exemplos de Input no [POSTMAN](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop)
  - Exemplo de configuração para fazer um POST:
 
-  - ![POST_exemple](https://i.imgur.com/K5jNYqf.png)
+   ![POST_exemple](https://i.imgur.com/K5jNYqf.png)
 
  - Exemplo de configuração para um GET:
 
-  - ![GET_exemple](https://i.imgur.com/BkXkLDw.png)
+   ![GET_exemple](https://i.imgur.com/BkXkLDw.png)
 ___
 ## Segunda Etapa
 
