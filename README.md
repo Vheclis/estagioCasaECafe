@@ -8,6 +8,7 @@ Para a primeira etapa tinhamos que fazer um aplicativo `RESTful`, com uma chamad
 Caso opte por _não usar_ o **Docker** é necessário que tanto o **_[MongoDB](https://www.mongodb.com/)_** quanto o **_[Node.js](https://nodejs.org/en/)_** estejam instalados na máquina.
 
 Ao escolher _usar_ o **Docker**, deve-se ter instalado tanto o **_[Docker](https://www.docker.com/)_** quanto o **_[Docker-Compose](https://docs.docker.com/compose/install/)_**.
+
 ### Rodando o app
 Ambas as chamadas `GET` e `POST`  devem ser feitas em **`localhost:8080`**, sendo o fim da rota `/plans` para o `GET` e `/payment` para o `POST`.
 Há duas formas de montar o app atualmente.
@@ -30,9 +31,12 @@ Há duas formas de montar o app atualmente.
 
 ### Exemplos de Input no [POSTMAN](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop)
  - Exemplo de configuração para fazer um POST:
-  - ![POST_exemple](https://imgur.com/K5jNYqf)
+
+  - ![POST_exemple](https://i.imgur.com/K5jNYqf.png)
+
  - Exemplo de configuração para um GET:
-  - ![GET_exemple](https://imgur.com/BkXkLDw)
+
+  - ![GET_exemple](https://i.imgur.com/BkXkLDw.png)
 ___
 ## Segunda Etapa
 
