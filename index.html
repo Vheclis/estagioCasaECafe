@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<title>Processo Seletivo - Casa e Cafe</title>
+	</head>
+
+	<body>
+			<nav class='navbar navbar-default'>
+			<div class='container-fluid'>
+				<div class='navbar-header'>
+					<a class='navbar-brand' href="index.html" id="test01">Casa e Cafe</a>
+				</div>
+				<div class='collapse navbar-collapse'>
+					<ul class='nav navbar-nav'>
+						<li><a href="#plans" onclick="render_page('/plans')">Plans</a></li>
+						<li><a onclick="render_page('/payment')">Payment</a></li>
+					</ul>
+				</div>
+			</div>
+			</nav>
+			<div class='container'>
+				<section class="jumbotron text-center">
+		      <h1 class="jumbotron-heading" id='header-title'>Casa e Cafe - Parte 02</h1>
+		      <p class="lead text-muted" id='header-text'>Nesta etapa do processo seletivo devemos fazer um <mark>frontend</mark> para a nossa API feita na primeira etapa.
+		      Para exibir os planos clique em <code>Plans</code> no navegador do site.
+		      Para fazer um pagamento clique em <code>Payment</code> no navegador do site.</p>
+		    </section>
+		    <div class="col-sm" id="content">
+		    </div>
+			</div>
+	</body>
+
+	<script type="text/javascript" src="render.js"></script>
+</html>

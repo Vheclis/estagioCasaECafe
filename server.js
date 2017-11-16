@@ -3,6 +3,17 @@ let express = require('express'),
      app = express(),
      port = 8080;
 
+let http = require('http');
+let fs = require('fs');
+
+let render = require('./render.js')
+
+app.use(express.static(__dirname + '/'));
+
+app.get('/', function (req, res) {
+  res.redirect('/index.html');
+})
+
 let body_parser = require('body-parser');
 
 app.use(body_parser.json());
@@ -20,10 +31,13 @@ let get_answear = JSON.parse(JSON.stringify(Config.plans));
 for (let i in plan_names)
       get_answear[plan_names[i]].price = 'R$ ' + get_answear[plan_names[i]].price.toString()
 
+
+
 app.get('/plans', (req, res) => {
     res.contentType('application/json'); 
     res.status(200);
-    res.json(get_answear);
+    console.log('ESTAMOS NO GET');
+    res.send(get_answear);
   }
 )
 
