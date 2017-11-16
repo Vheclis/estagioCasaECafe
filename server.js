@@ -36,7 +36,7 @@ for (let i in plan_names)
 app.get('/plans', (req, res) => {
     res.contentType('application/json'); 
     res.status(200);
-    console.log('ESTAMOS NO GET');
+    console.log('\nGET request successful to "/plans", 200.\n Returning data...');
     res.send(get_answear);
   }
 )

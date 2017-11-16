@@ -11,6 +11,7 @@ function render_page(url) {
 
 function render_table (render_url) {
 	let div_content = document.getElementById('content');
+	//	Testando se o conteúdo está vazio, caso não esteja eu o esvazio
 	if(div_content.innerHTML != '')
 		div_content.innerHTML = '';
 
@@ -21,17 +22,21 @@ function render_table (render_url) {
 		type			: 'GET',
 		datatype	: 'JSON',
 		success		: (data) => {
-			let columns = [];
-			let plan_names = Object.keys(data);
-			let headers = Object.keys(data[plan_names[0]]);
-
-			let table = document.createElement('table');
-			let tr 		= table.insertRow(-1);
-
-
+			let columns 		= [];
+			//	Pegando  os diferentes planos, para poder me mover no JSON
+			let plan_names 	= Object.keys(data);
+			//	Pegando os campos de cada plano
+			let headers 		= Object.keys(data[plan_names[0]]);
+			//	Criando a tabela
+			let table 			= document.createElement('table');
+			//	Criando a primeira linha (que irá conter os headers)
+			let tr 					= table.insertRow(-1);
+			
+			//	Colocando cada um dos headers na primeira linha
 			for(i in headers)	{
-				let th = document.createElement('th');
-				th.innerHTML = headers[i];
+				let th 				= document.createElement('th');
+				th.innerHTML 	= headers[i];
+
 				tr.appendChild(th);
 			}
 
@@ -39,26 +44,34 @@ function render_table (render_url) {
 			 *	Tenho que fazer esse append a parte, assim como as rows dos nomes dos produtos,
 			 *	pois os estou usando como chaves no meu arquivo JSON.
 			 */
-			th = document.createElement('th');
-			th.innerHTML = 'product';
+			th 						=	document.createElement('th');
+			th.innerHTML 	= 'product';
+			tr.className	=	'success text-center';
 			tr.appendChild(th);
 
+			/*
+			 *	Agora, para cada um dos planos, eu pego todos os seus dados e populo a tabela. Usando
+			 *	plan_names para me mover entre os planos e headers para me mover entre os campos.
+			 */
 			for(i in plan_names)	{
 				tr = table.insertRow(-1);
 
 				for(j in headers)		{
-					let tab_content = tr.insertCell(-1);
+					let tab_content 			= tr.insertCell(-1);
 					tab_content.innerHTML = data[plan_names[i]][headers[j]];
 				}
-				tab_content = tr.insertCell(-1);
+				tab_content 					= tr.insertCell(-1);
 				tab_content.innerHTML = plan_names[i];
 			}
-
-			table.className = 'table table-striped table-hover'
-
-			
+			//	Inserindo a tabela
+			table.className 			= 'table table-striped table-hover table-bordered'
 			div_content.className = 'table-responsive';
 			div_content.appendChild(table);
+
+			//	Alterando o header
+			document.getElementById('header-title').innerHTML	= 'Planos'
+			document.getElementById('header-text').className 	=	'lead text-muted text-center' 
+			document.getElementById('header-text').innerHTML 	= 'Aqui são exibidos todos os planos pré cadastrados nas <mark>configuração</mark>.'
 		}
 	})
 }
