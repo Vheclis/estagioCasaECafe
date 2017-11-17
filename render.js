@@ -4,16 +4,38 @@ function render_page(url) {
 		console.log('call render_table');
 		render_table(url);
 	}
-	//else if (url == '/payment')
-
+	else if (url == '/payment') {
+		console.log('call render_form');
+		render_form();
+	}
 }
 
+function render_form()	{
+	let div_content = document.getElementById('content');
+	//	Testando se o conteúdo está vazio, caso não esteja eu o esvazio
+	if(div_content.innerHTML != '') {
+		div_content.innerHTML = '';
+		div_content.className = '';
+	}
+	$.ajax({
+		url				: './payment.html',
+		datatype	: 'HTML',
+		success		: (data) => {
+			div_content.innerHTML = data;
+			document.getElementById('header').className = 'jumbotron text-center bg-answear-default'
+			document.getElementById('header-title').innerHTML = 'Novo Pagamento'
+			document.getElementById('header-text').innerHTML 	= ''
+		}
+	})
+}
 
 function render_table (render_url) {
 	let div_content = document.getElementById('content');
 	//	Testando se o conteúdo está vazio, caso não esteja eu o esvazio
-	if(div_content.innerHTML != '')
+	if(div_content.innerHTML != '') {
 		div_content.innerHTML = '';
+		div_content.className = '';	
+	}
 
 	render_url = 'http://localhost:8080' + render_url;
 	console.log(render_url);
@@ -69,9 +91,10 @@ function render_table (render_url) {
 			div_content.appendChild(table);
 
 			//	Alterando o header
+			document.getElementById('header').className = 'jumbotron text-center bg-answear-success'
 			document.getElementById('header-title').innerHTML	= 'Planos'
-			document.getElementById('header-text').className 	=	'lead text-muted text-center' 
-			document.getElementById('header-text').innerHTML 	= 'Aqui são exibidos todos os planos pré cadastrados nas <mark>configuração</mark>.'
+			document.getElementById('header-text').className 	=	'lead text-center' 
+			document.getElementById('header-text').innerHTML 	= 'Aqui são exibidos todos os planos pré cadastrados nas <code>configurações</code>.'
 		}
 	})
 }
