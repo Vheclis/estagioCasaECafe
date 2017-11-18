@@ -6,13 +6,9 @@ let express = require('express'),
 let http = require('http');
 let fs = require('fs');
 
-let render = require('./render.js')
-
 app.use(express.static(__dirname + '/'));
 
-app.get('/', function (req, res) {
-  res.redirect('/index.html');
-})
+app.use(express.static('.'))
 
 let body_parser = require('body-parser');
 
@@ -117,9 +113,12 @@ app.post('/payment',
                 return ;
               }
               
-              let err_answear = "ERRO: O produto deve exisir. Deve ser um dos seguintes:\n";
-              for (let i in plan_names)
-                err_answear += plan_names[i] + "\n"
+              let err_answear = "ERRO: O produto deve existir. Deve ser um dos seguintes:\n";
+              for (let i in plan_names) {
+                err_answear += plan_names[i];
+                if (i != (plan_names.length - 1) )
+                  err_answear += ', '
+              }
               return res.status(400).send(err_answear);
               
             }

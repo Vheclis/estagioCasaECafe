@@ -3,7 +3,7 @@
 	border-width: 2px;
 	border-radius: 10px;
 	margin-top: 15px;
-	padding-top: 10px;
+	padding: 10px;
 	
 	font-weight: bold;
 }
@@ -16,4 +16,9 @@
 .bg-answear-success {
 	background-color: #68e86a;
 	color: #238224;
+}
+
+.bg-answear-error {
+	background-color: #f44253;
+	color: #7a111b;
 }
