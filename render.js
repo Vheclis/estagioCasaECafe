@@ -54,8 +54,8 @@ $(document).ready(function() {
 				//	Colocando cada um dos headers na primeira linha
 				for(i in headers)	{
 					let th 				= document.createElement('th');
-					th.innerHTML 	= headers[i];
-
+					th.innerHTML 	= headers[i].charAt(0).toUpperCase() + headers[i].slice(1);;
+					th.className	= 'text-center';
 					tr.appendChild(th);
 				}
 
@@ -63,9 +63,9 @@ $(document).ready(function() {
 				 *	Tenho que fazer esse append a parte, assim como as rows dos nomes dos produtos,
 				 *	pois os estou usando como chaves no meu arquivo JSON.
 				 */
-				th 						=	document.createElement('th');
-				th.innerHTML 	= 'product';
-				tr.className	=	'success text-center';
+				th 				=	document.createElement('th');
+				th.innerHTML 	= 'Product';
+				th.className	= 'text-center';
 				tr.appendChild(th);
 
 				/*
@@ -83,14 +83,14 @@ $(document).ready(function() {
 					tab_content.innerHTML = plan_names[i];
 				}
 				//	Inserindo a tabela
-				table.className 			= 'table table-striped table-hover table-bordered'
+				table.className 			= 'table table-hover table-bordered'
 				div_content.className = 'table-responsive';
 				div_content.appendChild(table);
 
 				//	Alterando o header
 				document.getElementById('header-title').innerHTML	= 'Planos'
 				document.getElementById('header-text').className 	=	'lead text-center' 
-				document.getElementById('header-text').innerHTML 	= 'Aqui são exibidos todos os planos pré cadastrados nas <code>configurações</code>.'
+				document.getElementById('header-text').innerHTML 	= 'Aqui são exibidos todos os planos pré cadastrados nas configurações.'
 			}
 		})
 	});

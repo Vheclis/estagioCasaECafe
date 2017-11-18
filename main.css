@@ -4,8 +4,56 @@
 	border-radius: 10px;
 	margin-top: 15px;
 	padding: 10px;
-	
 	font-weight: bold;
+}
+
+.navbar {
+	font-family: 'Righteous', cursive;
+	font-weight: bold;
+}
+
+th {
+	font-family: 'Righteous', cursive;
+	background-color: #5e78d6;
+}
+
+td {
+	font-family: 'Electrolize', sans-serif;
+}
+
+table {
+	background-color: white;
+}
+
+.jumbotron {
+	background-color: #7ba7ed;
+}
+
+.jumbotron-heading {
+	font-family: 'Righteous', cursive;
+}
+
+.lead {
+	font-family: 'Electrolize', sans-serif;
+}
+form{
+	font-family: 'Electrolize', sans-serif;	
+}
+
+hr {
+	border-color: black;
+	background-color: black;
+}
+
+form {
+	border-style: solid;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+body {
+	background-color: #d2dff4;
+	border-color: black !important;
 }
 
 .bg-answear-default {
