@@ -21,7 +21,8 @@ $(document).ready(function() {
 			success		: (data) => {
 				div_content.innerHTML = data;
 				document.getElementById('header-title').innerHTML = 'Novo Pagamento'
-				document.getElementById('header-text').innerHTML 	= ''
+				document.getElementById('header-text').innerHTML 	= 'Aqui são inseridos os novos pagamentos. '+
+				'Os descontos não devem passar de 50% e os produtos e seus respectivos preços devem ser correspondentes.'
 			}
 		})
 	});

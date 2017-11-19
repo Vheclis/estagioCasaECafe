@@ -1,0 +1,44 @@
+<form id="form-payment" class='panel form-horizontal col-sm-6 container col-sm-offset-3' role='form'>
+	<div class="form-group">
+		<label class='col-sm-2 control-label' for='payment_date'>Data do Pagamento</label>
+		<div class="col-sm-10">
+			<input id='id_payment_date' name="payment_date" type='date' class='form-control form-text text-muted' placeholder="Insita a data da compra" required>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for='product' class='col-sm-2 control-label'>Produto</label>
+		<div class="col-sm-10">
+			<input id='id_product' name="product" type="text" class="form-control form-text text-muted" placeholder="Insira o produto" required>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for='product_price' class='col-sm-2 control-label'>Preço do Produto</label>
+		<div class="col-sm-10">
+			<input min="0" step="0.01" id='id_product_price' name="product_price" type='number' class='form-control form-text text-muted' placeholder="Insita o preço do produto" required>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for='discount' class='col-sm-2 control-label'>Desconto</label>
+		<div class="col-sm-10">
+			<input min="0" max="50" step="0.01" id='id_discount' name="discount" type="number" class="form-control form-text text-muted" placeholder="Insira a % de desconto" required>
+		</div>
+	</div>
+	<div class="radio radio-inline col-sm-offset-3 " >
+	  <label>
+	    <input type="radio" name="payment_type" id="id_cartao" value="cartao" checked>
+	    Cartão
+	  </label>
+	</div>
+	<div class="radio radio-inline">
+	  <label>
+	    <input type="radio" name="payment_type" id="id_boleto" value="boleto">
+	    Boleto
+	  </label>
+	</div>
+	<div class="radio radio-inline">
+		<button type="submit" class="btn" id="submit-payment">Concluir</button>
+	</div>
+	<div id='answer' class='bg-answear-default answer-box text-center'>
+  		Insira os dados acima!
+  	</div>
+</form>

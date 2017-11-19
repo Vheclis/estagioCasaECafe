@@ -1,3 +1,8 @@
+@keyframes animatedJumbotron {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
 .answer-box	{
 	border-style: solid;
 	border-width: 2px;
@@ -7,15 +12,56 @@
 	font-weight: bold;
 }
 
+footer {
+	font-size: small;
+	background-color: #482d1c;
+	border-radius: 5px;
+	color: white !important;
+	padding: 10px;
+}
+
+footer a{
+	color: #b4733b;
+}
+
 .navbar {
 	font-family: 'Righteous', cursive;
 	font-weight: bold;
+	border-color: #482d1c;
+	border-radius: 0px;
+	background-color: #482d1c;
+}
+
+.navbar a{
+	color: #b4733b !important;
 }
 
 th {
 	font-family: 'Righteous', cursive;
-	background-color: #5e78d6;
+	background-color: #482d1c;
+	color: #b4733b;
 }
+
+.btn {
+	background-color: #b4733b;
+	color: #482d1c;
+	font-weight: bold;
+	border: solid;
+	border-width: 2px;
+	border-color: #482d1c;
+}
+
+
+
+button:active, button:focus, button:hover{
+	background-color: #482d1c;
+	color: #b4733b !important;
+	font-weight: bold;
+	border: solid;
+	border-width: 2px;
+	border-color: #b4733b;
+}
+
 
 td {
 	font-family: 'Electrolize', sans-serif;
@@ -25,8 +71,18 @@ table {
 	background-color: white;
 }
 
+.table-bordered	{
+	border-color: #482d1c !important;
+}
+
 .jumbotron {
-	background-color: #7ba7ed;
+	background-image: url(./img/coffe.jpg);
+	background-position: 0px 0px;
+	background-repeat: repeat-x;
+	background-size: contain;
+	min-height: 	325px;
+	color: white;
+	animation: animatedJumbotron 10s linear infinite;
 }
 
 .jumbotron-heading {
@@ -52,13 +108,12 @@ form {
 }
 
 body {
-	background-color: #d2dff4;
-	border-color: black !important;
+	background-color: #e0924e;
 }
 
 .bg-answear-default {
-	background-color: #8fb7f7;
-	color: #2d5799;
+	background-color: #482d1c;
+	color: #b4733b;
 }
 
 .bg-answear-success {
