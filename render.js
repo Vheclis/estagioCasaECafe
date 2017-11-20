@@ -22,7 +22,7 @@ $(document).ready(function() {
 				div_content.innerHTML = data;
 				document.getElementById('header-title').innerHTML = 'Novo Pagamento'
 				document.getElementById('header-text').innerHTML 	= 'Aqui são inseridos os novos pagamentos. '+
-				'Os descontos não devem passar de 50% e os produtos e seus respectivos preços devem ser correspondentes.'
+				'Os descontos não devem passar de 50% e os produtos devem ser correspondentes com seus preços.'
 			}
 		})
 	});
@@ -91,7 +91,7 @@ $(document).ready(function() {
 				//	Alterando o header
 				document.getElementById('header-title').innerHTML	= 'Planos'
 				document.getElementById('header-text').className 	=	'lead text-center' 
-				document.getElementById('header-text').innerHTML 	= 'Aqui são exibidos todos os planos pré cadastrados nas configurações.'
+				document.getElementById('header-text').innerHTML 	= 'Aqui são exibidos todos os planos pré-cadastrados nas configurações.'
 			}
 		})
 	});
