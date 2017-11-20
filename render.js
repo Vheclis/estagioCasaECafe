@@ -7,7 +7,7 @@ let transaction_id = 0;
 
 $(document).ready(function() {
 
-	
+
 	$('#payment-nav').click( function (event) {
 		let div_content = document.getElementById('content');
 		//	Testando se o conteúdo está vazio, caso não esteja eu o esvazio
@@ -32,7 +32,7 @@ $(document).ready(function() {
 		//	Testando se o conteúdo está vazio, caso não esteja eu o esvazio
 		if(div_content.innerHTML != '') {
 			div_content.innerHTML = '';
-			div_content.className = '';	
+			div_content.className = '';
 		}
 
 		let render_url = 'http://localhost:8080/plans';
@@ -51,7 +51,7 @@ $(document).ready(function() {
 				let table 			= document.createElement('table');
 				//	Criando a primeira linha (que irá conter os headers)
 				let tr 					= table.insertRow(-1);
-				
+
 				//	Colocando cada um dos headers na primeira linha
 				for(i in headers)	{
 					let th 				= document.createElement('th');
@@ -90,7 +90,7 @@ $(document).ready(function() {
 
 				//	Alterando o header
 				document.getElementById('header-title').innerHTML	= 'Planos'
-				document.getElementById('header-text').className 	=	'lead text-center' 
+				document.getElementById('header-text').className 	=	'lead text-center'
 				document.getElementById('header-text').innerHTML 	= 'Aqui são exibidos todos os planos pré-cadastrados nas configurações.'
 			}
 		})
@@ -118,12 +118,5 @@ $(document).on('submit', 'form' , function (event) {
 				answear.className = 'bg-answear-error answer-box text-center'
 			}
 		});
-
-		/*let request = {};
-		let data = JSON.parse(JSON.stringify(jQuery(this).serializeArray()))
-		for ( i in data){
-			request[data[i]['name']] = data[i]['value'];
-		}
-		*/
 
 	});
