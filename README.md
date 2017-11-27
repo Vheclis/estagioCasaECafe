@@ -24,10 +24,11 @@ Após rodar o servidor conforme uma das opções abaixo é possível acessar à 
 ___
 ## Terceira Etapa
 
-___
-## Quarta Etapa
+Para a terceira etapa nos foi pedido a confecção de um arquivo de extenção `.pdf` analisando uma das telas da empresa, dizendo onde, como e por que nós usaríamos [Web Components](https://www.tableless.com.br/web-components-introducao/) naquele caso.
 
+Esse arquivo pode ser encontrado na pasta **`terceira-dinamica`**, nele também há a minha opinião sobre o *Processo Seletivo* como um todo.
 ___
+
 
 ## Pré-requisitos
 Caso opte por _não usar_ o **Docker** é necessário que tanto o **_[MongoDB](https://www.mongodb.com/)_** quanto o **_[Node.js](https://nodejs.org/en/)_** estejam instalados na máquina.
